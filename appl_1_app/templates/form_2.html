@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}Форма Модель{% endblock %}
+
+{% block content %}
+    <div style="height: auto; padding: 20px;">
+        <h1>Форма для ввода данных</h1>
+        
+        <p>
+            Изготовление керамики вручную начинается с подготовки глины. Мастера формируют изделия на гончарном круге 
+            или вручную, а затем сушат и обжигают в печи при высокой температуре. Каждый этап требует точности и 
+            уважения к материалу. Такое ремесло не только передаёт тепло рук мастера, но и сохраняет связь поколений.
+        </p>
+
+        <form action="{% url 'appl_1_app:form_2' %}" method="POST">
+            {% csrf_token %}
+            
+            <div style="margin-bottom: 20px;">
+                {{ form }}
+            </div>
+            
+            <input type="submit" value="Отправить" id="id_submit">
+        </form>
+    </div>
+{% endblock %}

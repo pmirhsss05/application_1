@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Форма{% endblock %}
+
+{% block content %}
+    <div  style="height: auto; padding: 20px;">
+        <h1>Форма запроса</h1>
+        
+        <p>
+            Гончарное мастерство — это древнее искусство создания посуды, декоративных и утилитарных изделий из глины. 
+            Оно требует терпения, внимания к деталям и творческого подхода. Сегодня это ремесло не только сохраняет культурные 
+            традиции, но и вдохновляет многих на создание уникальных изделий своими руками.
+        </p>
+
+        <form action="{% url 'appl_1_app:get' %}" method="get" target="_self">
+            <div style="margin-bottom: 15px;">
+                {{ form_1 }}
+            </div>
+            
+            <input type="submit" value="Отправить" id="id_submit">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Настраиваемая форма{% endblock %}
+
+{% block content %}
+<div style="height: auto; padding: 20px;">
+    <h1>Форма с параметрами</h1>
+
+    <p>
+        Гончарное мастерство включает в себя не только создание посуды, но и художественную лепку, глазурование и роспись. 
+        Каждое изделие уникально и несёт в себе часть души мастера. Это ремесло востребовано и сегодня — изделия ручной работы 
+        украшают интерьеры, используются в быту и высоко ценятся за свою аутентичность.
+    </p>
+
+    <form action="{% url 'appl_1_app:form_3' %}" method="POST">
+        {% csrf_token %}
+
+        <div style="margin-bottom: 20px;">
+            <label>Формулировка</label><br>
+            {% render_field form.task placeholder="Введите задачу..." %}
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label>X</label><br>
+            {% render_field form.x placeholder="Значение X" %}
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label>Результат</label><br>
+            {% render_field form.result placeholder="Здесь будет результат" %}
+        </div>
+
+        <input type="submit" value="Отправить" id="id_submit">
+    </form>
+</div>
+{% endblock %}

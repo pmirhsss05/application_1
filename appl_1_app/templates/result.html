@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Результат{% endblock %}
+
+{% block content %}
+<div style="height: auto; padding: 20px;">
+    <h1>Результат</h1>
+    
+    <p>{{ task_formulation }}</p>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Задача</th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+                <th scope="col">Результат</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for item in last_values %}
+                    <td>{{ item }}</td>
+                {% endfor %}
+                <td><strong>{{ result }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 30px;">
+        {% if result %}
+            <p><strong>Поздравляем! Вы успешно решили задачу.</strong></p>
+        {% else %}
+            <p><strong>Попробуйте ещё раз — возможно, где-то закралась ошибка.</strong></p>
+        {% endif %}
+    </div>
+
+    <div style="margin-top: 40px;">
+        <p>
+            Гончарное мастерство — это ремесло, сочетающее в себе творчество и традиции. Каждый гончар создает уникальные изделия из 
+            простого материала — глины, превращая её в предметы быта или искусства. Этот процесс требует терпения, точности и уважения 
+            к материалу.
+        </p>
+    </div>
+</div>
+{% endblock %}

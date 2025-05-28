@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block title %}Таблица{% endblock %}
+
+{% block content %}
+<div  style="padding: 30px; background-repeat: repeat; height: auto;">
+    <h1>Таблица</h1>
+    <p>Таблица по умолчанию.</p>
+
+    <div class="decorative-border">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    {% for name in name_list %}
+                        <th>{{ name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in objects_values %}
+                    <tr>
+                        {% for key, value in object.items %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="mt-5">Таблица после фильтрации и сортировки</h2>
+    <div class="decorative-border">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    {% for name in verbose_name_list %}
+                        <th>{{ name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for objects_values in objects_values_list %}
+                    <tr>
+                        {% for item in objects_values %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="mt-5">Статистика после фильтрации и сортировки</h2>
+    <div class="decorative-border">
+        {% for item in statics.statics_val %}
+            <ul>
+                {% for k, v in item.items %}
+                    <li>
+                        <strong>Среднее значение:</strong> {{ v }};
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+
+    <div style="margin-top: 40px;">
+        <p>
+            Гончарное мастерство — это древнее ремесло, основанное на работе с глиной. Изделия проходят через стадии лепки, сушки 
+            и обжига, приобретая прочность и уникальный внешний вид. Сегодня гончарство — не только ремесло, но и способ 
+            самовыражения для многих мастеров по всему миру.
+        </p>
+    </div>
+</div>
+{% endblock %}
