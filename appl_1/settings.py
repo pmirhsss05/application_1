@@ -1,13 +1,16 @@
+
+
 from pathlib import Path
-import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Чтение переменных окружения
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-)wgx)3x(wrs4%=(*^)cw6rps*t*#98dd(l%r#o8ktg$^+lpuy8')
-DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'  # По умолчанию True для локальной разработки
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+SECRET_KEY = 'django-insecure-)wgx)3x(wrs4%=(*^)cw6rps*t*#98dd(l%r#o8ktg$^+lpuy8'
+
+DEBUG = False
+
+ALLOWED_HOSTS = ["application-1-4yba.onrender.com"]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,7 +38,7 @@ ROOT_URLCONF = 'appl_1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Путь к кастомным шаблонам
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -50,19 +53,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'appl_1.wsgi.application'
 
-# База данных (настроена для PostgreSQL, замените значения на свои)
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'your_db_name'),
-        'USER': os.getenv('DB_USER', 'your_db_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'your_db_password'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
 # Password validation
+# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -79,15 +82,19 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
+# https://docs.djangoproject.com/en/4.1/topics/i18n/
+
 LANGUAGE_CODE = 'ru-ru'
 TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
 USE_TZ = True
 
-# Static files
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.1/howto/static-files/
+
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Default primary key field type
+# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
