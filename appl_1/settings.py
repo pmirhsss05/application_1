@@ -10,6 +10,7 @@ SECRET_KEY = 'django-insecure-)wgx)3x(wrs4%=(*^)cw6rps*t*#98dd(l%r#o8ktg$^+lpuy8
 DEBUG = True
 
 ALLOWED_HOSTS = ["application-1-4yba.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://application-1-4yba.onrender.com"]
 
 
 INSTALLED_APPS = [
